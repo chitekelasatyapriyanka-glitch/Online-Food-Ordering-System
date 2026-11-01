@@ -1,4 +1,4 @@
-const express = require("express");
+ const express = require("express");
 const app = express();
 
 app.use(express.json());
@@ -35,7 +35,9 @@ app.post("/register", (req, res) => {
         password
     });
 
-    res.json({ message: "Registration successful!" });
+    res.json({
+        message: "Registration successful!"
+    });
 });
 
 app.post("/login", (req, res) => {

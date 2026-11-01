@@ -92,4 +92,7 @@ function placeOrder() {
     document.getElementById("customerAddress").value = "";
 }
 
-displayFoods();
+document.addEventListener("DOMContentLoaded", function () {
+    displayFoods();
+    displayCart();
+});

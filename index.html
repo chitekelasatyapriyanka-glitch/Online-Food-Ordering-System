@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Food Ordering System</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav class="navbar">
-    <h2>Foodie Express</h2>
 
-    <div>
-        <a href="index.html">Home</a>
-        <a href="#menu">Food Menu</a>
-        <a href="#cart">Cart</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="admin-login.html">Admin</a>
-    </div>
-</nav>
-    </header>
+    <title>Online Food Ordering System</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>Foodie Express</h2>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="#menu">Food Menu</a>
+            <a href="#cart">Cart</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="admin-login.html">Admin</a>
+        </div>
+    </nav>
 
     <section class="hero">
         <h2>Welcome to Foodie Express!</h2>
@@ -31,30 +35,33 @@
         <h2>Our Food Menu</h2>
         <div id="food-list"></div>
     </section>
-    
-<section id="customer">
+
+    <section id="customer">
         <h2>Customer Details</h2>
 
-    <input type="text" id="customerName"
-        placeholder="Enter Your Name">
+        <input type="text" id="customerName"
+            placeholder="Enter Your Name">
 
-    <br><br>
+        <br><br>
 
-    <input type="tel" id="customerPhone"
-        placeholder="Enter Mobile Number">
+        <input type="tel" id="customerPhone"
+            placeholder="Enter Mobile Number">
 
-    <br><br>
+        <br><br>
 
-    <textarea id="customerAddress"
-        placeholder="Enter Delivery Address"></textarea>
-</section>
+        <textarea id="customerAddress"
+            placeholder="Enter Delivery Address"></textarea>
+    </section>
+
     <section id="cart">
         <h2>My Cart</h2>
+
         <div id="cart-items"></div>
+
         <h3>Total: ₹<span id="total">0</span></h3>
+
         <button onclick="placeOrder()">Place Order</button>
     </section>
 
-    <script src="script.js"></script>
 </body>
 </html>
