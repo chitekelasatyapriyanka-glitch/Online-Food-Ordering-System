@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Express Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="login-container">
+        <h1>Foodie Express</h1>
+        <h2>Customer Login</h2>
+
+        <form onsubmit="loginUser(event)">
+    <input type="email"
+           id="loginEmail"
+           placeholder="Enter Email"
+           required>
+
+    <input type="password"
+           id="loginPassword"
+           placeholder="Enter Password"
+           required>
+
+    <button type="submit">Login</button>
+</form>
+
+<script>
+async function loginUser(event) {
+    event.preventDefault();
+
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
+
+    try {
+        const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+
+        if (response.ok) {
+            window.location.href = "index.html";
+        }
+    } catch (error) {
+        alert("Server connection failed!");
+    }
+}
+</script>
+
+        <p>Don't have an account?</p>
+        <a href="register.html">Create Account</a>
+    </section>
+
+</body>
+</html>

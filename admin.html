@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Foodie Express</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #ff6600;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 25px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        button {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        table {
+            background: white;
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Foodie Express - Admin Dashboard</h1>
+</header>
+
+<div class="container">
+
+    <h2>Welcome Admin!</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Orders</h3>
+            <h2>25</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Foods</h3>
+            <h2 id="foodCount">6</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Customers</h3>
+            <h2>15</h2>
+        </div>
+    </div>
+
+    <h2>Manage Food Items</h2>
+
+    <input type="text" id="foodName"
+           placeholder="Food Name">
+
+    <input type="number" id="foodPrice"
+           placeholder="Food Price">
+
+    <button onclick="addFood()">Add Food</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Food Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="foodList">
+            <tr>
+                <td>Pizza</td>
+                <td>199</td>
+                <td><button onclick="deleteFood(this)">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Burger</td>
+                <td>99</td>
+                <td><button onclick="deleteFood(this)">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Biryani</td>
+                <td>149</td>
+                <td><button onclick="deleteFood(this)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+function addFood() {
+    let name = document.getElementById("foodName").value;
+    let price = document.getElementById("foodPrice").value;
+
+    if (name === "" || price === "" || Number(price) <= 0) {
+        alert("Please enter valid food details");
+        return;
+    }
+
+    let row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${name.replace(/[&<>"']/g, "")}</td>
+        <td>${Number(price)}</td>
+        <td><button onclick="deleteFood(this)">Delete</button></td>
+    `;
+
+    document.getElementById("foodList").appendChild(row);
+
+    updateCount();
+
+    document.getElementById("foodName").value = "";
+    document.getElementById("foodPrice").value = "";
+}
+
+function deleteFood(button) {
+    button.closest("tr").remove();
+    updateCount();
+}
+
+function updateCount() {
+    document.getElementById("foodCount").textContent =
+        document.getElementById("foodList").rows.length;
+}
+</script>
+
+</body>
+</html>
